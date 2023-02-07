@@ -1,13 +1,11 @@
-
 services:
-  db:
-    environment:
-      POSTGRES_PASSWORD: mysecretpassword
-    image: postgres
-  wordpress:
-    image: wordpress
-    links:
-    - db
+  jenkins:
+    image: jenkins/jenkins:lts
     ports:
-    - 8085:80
-version: '2.0'
+      - 8089:8080
+      - 50000:50000
+    volumes:
+      - jenkins_home:/var/jenkins_home
+volumes:
+  jenkins_home:
+version: '3.0'
